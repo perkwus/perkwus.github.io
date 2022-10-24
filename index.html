@@ -7,63 +7,65 @@
     <title>Document</title>
     <script src="script.js" async type="module"></script>
     <style>
-       @font-face {
-  font-family: Roan;
-  src: url(Roan-Regular.otf);
-}
+        @font-face {
+            font-family: Roan;
+            src: url(Roan-Regular.otf);
+        }
         body {
-  background-color:#F5E2C8;
-  font-family: Roan;
-}
-h1 {
-  text-align:center;
-}
-p {
-  text-align:center;
-  animation-name: fade;
-  animation-duration: 3s;
-  font-size: 30px;
-}
-div.reroll {
-    text-align:center;
-}
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+            background-color:#F5E2C8;
+            font-family: Roan;
+        }
+        h1 {
+            text-align:center;
+        }
+        p {
+            text-align:center;
+            animation-name: fade;
+            animation-duration: 3s;
+            font-size: 30px;
+        }
+        div.reroll {
+            text-align:center;
+            opacity: 0;
+        }
+        @keyframes fade {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
 
-a:link {
-  animation-name: fade;
-  animation-duration: 2s;
-  animation-delay: 2s;
-  animation-fill-mode: forwards;
-}
-a:visited {
-  animation-name: fade;
-  animation-duration: 2s;
-  animation-delay: 2s;
-  animation-fill-mode: forwards;
-}
+        a:link {
+            animation-name: fade;
+            animation-duration: 3s;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+        a:visited {
+            animation-name: fade;
+            animation-duration: 3s;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
     </style>
 </head>
 <body>
+    <script>
+        import { virgil } from "/virgil.js"
+        let lines = virgil
+        let getVerse = function() {return Math.floor(Math.random() * lines.length)}
+        let rollVirgil = function() {
+        let i = getVerse()
+        return `${lines[i]} (Line ${i+1})`
+        }
+        document.getElementById("lots").innerHTML = rollVirgil();
+    </script>
     <h1>SORTES&#8226;VERGILIANAE</h1>
+    <i><h1>The Virgilian Lots</h1></i>
     <p id="lots"></p>
     <div class="reroll">
     <a href="#" onClick="window.location.reload()">
         roll again
      </a>
     </div>
-<script>
-import { virgil } from "/virgil.js"
-
-let lines = virgil
-let getVerse = function() {return Math.floor(Math.random() * lines.length)}
-let rollVirgil = function() {
-  let i = getVerse()
-  return `${lines[i]} (Line ${i+1})`
-}
-document.getElementById("lots").innerHTML = rollVirgil();
-</script>
+    <hr/>
 </body>
 </html>
